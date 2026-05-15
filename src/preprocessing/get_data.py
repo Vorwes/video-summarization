@@ -5,6 +5,7 @@ from youtube_transcript_api import YouTubeTranscriptApi
 
 
 def get_arabic_transcript(ytt_api: YouTubeTranscriptApi, video_id: str) -> str | None:
+    """Fetches the Arabic transcript for a given YouTube video ID."""
     try:
         transcript = ytt_api.fetch(video_id, languages=["ar"])
         raw_transcript = transcript.to_raw_data()
@@ -22,6 +23,7 @@ def get_arabic_transcript(ytt_api: YouTubeTranscriptApi, video_id: str) -> str |
 
 
 def append_to_jsonl(video_id: str, transcript: str) -> None:
+    """Appends a new entry to the dataset JSONL file."""
     entry = {"video_id": video_id, "transcript": transcript}
 
     os.makedirs("data", exist_ok=True)
@@ -31,6 +33,7 @@ def append_to_jsonl(video_id: str, transcript: str) -> None:
 
 
 def is_duplicate(video_id: str, file_path: str = "data/dataset.jsonl") -> bool:
+    """Checks if a video ID already exists in the dataset."""
     search_string = f'"video_id": "{video_id}"'
 
     try:
