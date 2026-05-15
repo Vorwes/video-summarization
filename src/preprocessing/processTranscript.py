@@ -5,11 +5,6 @@ from typing import Dict, List, Tuple
 
 import torch
 from camel_tools.utils.dediac import dediac_ar
-from camel_tools.utils.normalize import (
-    normalize_alef_ar,
-    normalize_alef_maksura_ar,
-    normalize_teh_marbuta_ar,
-)
 from transformers import pipeline
 
 
@@ -43,10 +38,6 @@ class ArabicTranscriptProcessor:
         content = re.sub(r"http\S+|www.\S+|@\w+", "", text)
         content = re.sub(r"\[.*?\]|\(.*?\)", "", content)
         content = dediac_ar(content)
-
-        content = normalize_alef_ar(content)
-        content = normalize_alef_maksura_ar(content)
-        content = normalize_teh_marbuta_ar(content)
 
         content = re.sub(r"[ـ]+", "", content)
         content = re.sub(r"[^\w\s\u0600-\u06FF]", " ", content)
