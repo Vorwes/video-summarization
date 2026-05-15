@@ -25,3 +25,14 @@ def append_to_jsonl(video_id: str, transcript: str) -> None:
 
     with open("dataset.jsonl", "a", encoding="utf-8") as f:
         f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+
+
+if __name__ == "__main__":
+    video_id = "example_id"
+    ytt_api = YouTubeTranscriptApi()
+    fetched_transcript = get_arabic_transcript(ytt_api, video_id)
+
+    if fetched_transcript:
+        append_to_jsonl(video_id, fetched_transcript)
+    else:
+        print(f"No Arabic transcript found for video ID: {video_id}")
