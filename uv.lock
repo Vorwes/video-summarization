@@ -1,7 +1,6 @@
 version = 1
 revision = 3
 requires-python = ">=3.11"
-<<<<<<< HEAD
 resolution-markers = [
     "python_full_version >= '3.14' and sys_platform == 'win32'",
     "python_full_version >= '3.14' and sys_platform == 'emscripten'",
@@ -74,8 +73,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/b7/04/c3ae2bdfa65646014
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b3/c6/be9dac2393a8447128e2b539e93c9219f41278ce15394a4b7cd16aa10ea4/camel_tools-1.5.7-py3-none-any.whl", hash = "sha256:6872a93a9d08cbae57be67a735c699e02b940269d06c95668e300d57a37b92ae", size = 124731, upload-time = "2025-09-17T04:52:01.739Z" },
 ]
-=======
->>>>>>> origin/main
 
 [[package]]
 name = "certifi"
@@ -176,7 +173,6 @@ wheels = [
 ]
 
 [[package]]
-<<<<<<< HEAD
 name = "colorama"
 version = "0.4.6"
 source = { registry = "https://pypi.org/simple" }
@@ -251,6 +247,15 @@ nvrtc = [
 ]
 nvtx = [
     { name = "nvidia-nvtx", marker = "sys_platform == 'linux'" },
+]
+
+[[package]]
+name = "defusedxml"
+version = "0.7.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/0f/d5/c66da9b79e5bdb124974bfe172b4daf3c984ebd9c2a06e2b8a4dc7331c72/defusedxml-0.7.1.tar.gz", hash = "sha256:1bb3032db185915b62d7c6209c5a8792be6a32ab2fedacc84e01b52c51aa3e69", size = 75520, upload-time = "2021-03-08T10:59:26.269Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/07/6c/aa3f2f849e01cb6a001cd8554a88d4c77c5c1a31c95bdf1cf9301e6d9ef4/defusedxml-0.7.1-py2.py3-none-any.whl", hash = "sha256:a352e7e428770286cc899e2542b6cdaedb2b4953ff269a210103ec58f6198a61", size = 25604, upload-time = "2021-03-08T10:59:24.45Z" },
 ]
 
 [[package]]
@@ -383,14 +388,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/7c/b7/8cb61d2eece5fb05a83271da168186721c450eb74e3c31f7ef3169fa475b/huggingface_hub-0.36.2.tar.gz", hash = "sha256:1934304d2fb224f8afa3b87007d58501acfda9215b334eed53072dd5e815ff7a", size = 649782, upload-time = "2026-02-06T09:24:13.098Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a8/af/48ac8483240de756d2438c380746e7130d1c6f75802ef22f3c6d49982787/huggingface_hub-0.36.2-py3-none-any.whl", hash = "sha256:48f0c8eac16145dfce371e9d2d7772854a4f591bcb56c9cf548accf531d54270", size = 566395, upload-time = "2026-02-06T09:24:11.133Z" },
-=======
-name = "defusedxml"
-version = "0.7.1"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/0f/d5/c66da9b79e5bdb124974bfe172b4daf3c984ebd9c2a06e2b8a4dc7331c72/defusedxml-0.7.1.tar.gz", hash = "sha256:1bb3032db185915b62d7c6209c5a8792be6a32ab2fedacc84e01b52c51aa3e69", size = 75520, upload-time = "2021-03-08T10:59:26.269Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/07/6c/aa3f2f849e01cb6a001cd8554a88d4c77c5c1a31c95bdf1cf9301e6d9ef4/defusedxml-0.7.1-py2.py3-none-any.whl", hash = "sha256:a352e7e428770286cc899e2542b6cdaedb2b4953ff269a210103ec58f6198a61", size = 25604, upload-time = "2021-03-08T10:59:24.45Z" },
->>>>>>> origin/main
 ]
 
 [[package]]
@@ -403,7 +400,6 @@ wheels = [
 ]
 
 [[package]]
-<<<<<<< HEAD
 name = "jinja2"
 version = "3.1.6"
 source = { registry = "https://pypi.org/simple" }
@@ -1039,8 +1035,6 @@ wheels = [
 ]
 
 [[package]]
-=======
->>>>>>> origin/main
 name = "requests"
 version = "2.34.2"
 source = { registry = "https://pypi.org/simple" }
@@ -1056,7 +1050,6 @@ wheels = [
 ]
 
 [[package]]
-<<<<<<< HEAD
 name = "safetensors"
 version = "0.7.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1401,8 +1394,6 @@ wheels = [
 ]
 
 [[package]]
-=======
->>>>>>> origin/main
 name = "urllib3"
 version = "2.7.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1416,18 +1407,15 @@ name = "video-summarization"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-<<<<<<< HEAD
     { name = "camel-tools" },
-]
-
-[package.metadata]
-requires-dist = [{ name = "camel-tools", specifier = ">=1.5.7" }]
-=======
     { name = "youtube-transcript-api" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "youtube-transcript-api", specifier = ">=1.2.4" }]
+requires-dist = [
+    { name = "camel-tools", specifier = ">=1.5.7" },
+    { name = "youtube-transcript-api", specifier = ">=1.2.4" },
+]
 
 [[package]]
 name = "youtube-transcript-api"
@@ -1441,4 +1429,3 @@ sdist = { url = "https://files.pythonhosted.org/packages/60/43/4104185a2eaa839da
 wheels = [
     { url = "https://files.pythonhosted.org/packages/be/95/129ea37efd6cd6ed00f62baae6543345c677810b8a3bf0026756e1d3cf3c/youtube_transcript_api-1.2.4-py3-none-any.whl", hash = "sha256:03878759356da5caf5edac77431780b91448fb3d8c21d4496015bdc8a7bc43ff", size = 485227, upload-time = "2026-01-29T09:09:15.427Z" },
 ]
->>>>>>> origin/main
