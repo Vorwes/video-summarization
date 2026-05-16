@@ -9,7 +9,7 @@ from transformers import pipeline
 
 
 class ArabicTranscriptProcessor:
-    def __init__(self, device: int = None):
+    def __init__(self, device: int | None = None):
         if device is None:
             device = 0 if torch.cuda.is_available() else -1
 
@@ -47,6 +47,7 @@ class ArabicTranscriptProcessor:
         content = re.sub(r"\b(\w+)(?:\s+\1\b)+", r"\1", content)
         content = re.sub(r"([a-zA-Z]+)", r" \1 ", content)
         content = re.sub(r"\s+", " ", content).strip()
+        content = content.replace("<<", "")
 
         return content
 
@@ -130,6 +131,8 @@ class ArabicTranscriptProcessor:
                     segments = []
 
                 processed_data = self.clean_transcript(segments)
-                record.update(processed_data)
 
-                outfile.write(json.dumps(record, ensure_ascii=False) + "\n")
+                new_record = {"video_id": record.get("video_id", "UNKNOWN_ID")}
+                new_record.update(processed_data)
+
+                outfile.write(json.dumps(new_record, ensure_ascii=False) + "\n")
