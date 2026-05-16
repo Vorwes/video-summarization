@@ -9,7 +9,7 @@ from transformers import pipeline
 
 
 class ArabicTranscriptProcessor:
-    def __init__(self, device: int = None):
+    def __init__(self, device: int | None = None):
         if device is None:
             device = 0 if torch.cuda.is_available() else -1
 
