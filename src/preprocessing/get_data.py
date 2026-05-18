@@ -32,7 +32,7 @@ def append_to_jsonl(video_id: str, transcript: str) -> None:
         f.write(json.dumps(entry, ensure_ascii=False) + "\n")
 
 
-def is_duplicate(video_id: str, file_path: str = "data/dataset.jsonl") -> bool:
+def is_duplicate(video_id: str, file_path: str = "../data/dataset.jsonl") -> bool:
     """Checks if a video ID already exists in the dataset."""
     search_string = f'"video_id": "{video_id}"'
 
