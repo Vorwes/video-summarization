@@ -9,6 +9,8 @@ from transformers import pipeline
 
 
 class ArabicTranscriptProcessor:
+    """A comprehensive processor for Arabic transcripts that performs deep normalization, robust dialect identification, and generates LLM system prompts based on detected dialects."""
+
     def __init__(self, device: int | None = None):
         if device is None:
             device = 0 if torch.cuda.is_available() else -1
@@ -35,6 +37,7 @@ class ArabicTranscriptProcessor:
         }
 
     def deep_normalize_text(self, text: str) -> str:
+        """Performs deep normalization on Arabic text, including URL and mention removal, diacritic stripping, character normalization, and reduction of repeated characters."""
         content = re.sub(r"http\S+|www.\S+|@\w+", "", text)
         content = re.sub(r"\[.*?\]|\(.*?\)", "", content)
         content = dediac_ar(content)
@@ -54,6 +57,7 @@ class ArabicTranscriptProcessor:
     def identify_robust_dialect(
         self, text: str, chunk_word_size: int = 300
     ) -> Tuple[str, float]:
+        """Identifies the Arabic dialect of the given text by splitting it into manageable chunks, classifying each chunk, and then aggregating the results to determine the most likely dialect and its confidence score."""
         words = text.split()
         if not words:
             return "Unknown", 0.0
@@ -76,6 +80,7 @@ class ArabicTranscriptProcessor:
         return most_common_label, avg_confidence
 
     def get_llm_system_prompt(self, raw_label: str) -> str:
+        """Generates an LLM system prompt based on the detected dialect."""
         mapped_dialect = self.dialect_map.get(raw_label, "Arabic")
         return (
             f"You are an expert Arabic linguist. The following transcript is spoken in the "
@@ -83,6 +88,7 @@ class ArabicTranscriptProcessor:
         )
 
     def clean_transcript(self, transcript_segments: List[str]) -> Dict:
+        """Cleans and processes the transcript segments by performing deep normalization, identifying the dialect, and preparing the data for LLM summarization."""
         if not transcript_segments:
             return {
                 "processed_text": "",
@@ -107,6 +113,7 @@ class ArabicTranscriptProcessor:
         }
 
     def process_jsonl(self, input_path: str, output_path: str, text_key: str = "text"):
+        """Processes a JSONL file containing Arabic transcripts, applying the cleaning and dialect identification pipeline to each record, and writes the results to a new JSONL file."""
         with (
             open(input_path, "r", encoding="utf-8") as infile,
             open(output_path, "w", encoding="utf-8") as outfile,
