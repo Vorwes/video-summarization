@@ -22,18 +22,11 @@ class ArabicTranscriptProcessor:
         )
 
         self.dialect_map = {
-            "Amman": "Jordanian/Levantine",
-            "Beirut": "Lebanese/Levantine",
-            "Damascus": "Syrian/Levantine",
-            "Jerusalem": "Palestinian/Levantine",
-            "Riyadh": "Saudi/Gulf",
-            "Doha": "Qatari/Gulf",
-            "Cairo": "Egyptian",
-            "Alexandria": "Egyptian",
-            "Tunis": "Tunisian/Maghrebi",
-            "Algiers": "Algerian/Maghrebi",
-            "Rabat": "Moroccan/Maghrebi",
-            "Baghdad": "Iraqi",
+            "Levantine": "Lebanese/Jordanian/Syrian/Palestinian",
+            "Beirut": "Levantine",
+            "Gulf": "Qatari/Saudi/Emirati/Kuwaiti/Bahraini/Omani",
+            "Egyptian": "Egyptian",
+            "Iraqi": "Iraqi",
         }
 
     def deep_normalize_text(self, text: str) -> str:
