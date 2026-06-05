@@ -1,6 +1,7 @@
 import json
 import os
 
+import yaml
 from youtube_transcript_api import YouTubeTranscriptApi
 
 
@@ -48,16 +49,20 @@ def is_duplicate(video_id: str, file_path: str = "../data/dataset.jsonl") -> boo
 
 
 if __name__ == "__main__":
-    video_id = "l9Rp6-YoXIs"
-
-    if is_duplicate(video_id):
-        print("Video already exists in the dataset.")
-        exit()
-
     ytt_api = YouTubeTranscriptApi()
-    fetched_transcript = get_arabic_transcript(ytt_api, video_id)
 
-    if fetched_transcript:
-        append_to_jsonl(video_id, fetched_transcript)
-    else:
-        print(f"No Arabic transcript found for video ID: {video_id}")
+    with open("../data/videos/cleaned_urls.yaml", "r", encoding="utf-8") as file:
+        urls = yaml.safe_load(file)
+
+    for dialect, video_ids in urls.items():
+        for video_id in video_ids:
+            if is_duplicate(video_id):
+                print("Video already exists in the dataset.")
+                continue
+
+            fetched_transcript = get_arabic_transcript(ytt_api, video_id)
+
+            if fetched_transcript:
+                append_to_jsonl(video_id, fetched_transcript)
+            else:
+                print(f"No Arabic transcript found for video ID: {video_id}")
