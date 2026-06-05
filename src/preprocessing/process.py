@@ -3,7 +3,7 @@ import re
 from camel_tools.utils.dediac import dediac_ar
 
 def deep_normalize_text(text: str) -> str:
-    """Performs deep normalization on Arabic text."""
+    """Performs normalization on text."""
     if not isinstance(text, str):
         return ""
         
@@ -40,7 +40,7 @@ def process_transcripts_jsonl(input_file: str, output_file: str):
                 # Parse the current line as a JSON object
                 record = json.loads(line)
                 
-                # Extract your specific fields
+                # Extract specific fields
                 transcript = record.get("transcript", "")
                 video_id = record.get("video_id", "UNKNOWN")
                 
