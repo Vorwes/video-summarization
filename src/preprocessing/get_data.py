@@ -23,9 +23,9 @@ def get_arabic_transcript(ytt_api: YouTubeTranscriptApi, video_id: str) -> str |
         return None
 
 
-def append_to_jsonl(video_id: str, transcript: str) -> None:
+def append_to_jsonl(video_id: str, dialect: str, transcript: str) -> None:
     """Appends a new entry to the dataset JSONL file."""
-    entry = {"video_id": video_id, "transcript": transcript}
+    entry = {"video_id": video_id, "dialect": dialect, "transcript": transcript}
 
     os.makedirs("../data", exist_ok=True)
 
