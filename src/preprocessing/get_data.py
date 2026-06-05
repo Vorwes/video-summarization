@@ -63,6 +63,6 @@ if __name__ == "__main__":
             fetched_transcript = get_arabic_transcript(ytt_api, video_id)
 
             if fetched_transcript:
-                append_to_jsonl(video_id, fetched_transcript)
+                append_to_jsonl(video_id, dialect, fetched_transcript)
             else:
                 print(f"No Arabic transcript found for video ID: {video_id}")
