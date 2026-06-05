@@ -1,6 +1,6 @@
 import json
 import os
-
+import time
 import yaml
 from youtube_transcript_api import YouTubeTranscriptApi
 
@@ -66,3 +66,4 @@ if __name__ == "__main__":
                 append_to_jsonl(video_id, dialect, fetched_transcript)
             else:
                 print(f"No Arabic transcript found for video ID: {video_id}")
+            time.sleep(5)
