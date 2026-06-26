@@ -34,5 +34,3 @@ uv run python -m preprocess.py
 3. Model Fine-Tuning
 - Fine-tunes the LLM to generate 5-line MSA bullet-point summaries and evaluates the performance on a held-out test set.
 - Environment: Optimized for execution on cloud-based GPU instances (e.g., Lightning AI).
-- Input: data/normalized_output.jsonl (transcripts) and data/summarized_last.jsonl (gold standard summaries)
-- Output: Fine-tuned adapter weights saved to ./final_summary_adapters2 and BERTScore evaluation metrics printed to the console.
