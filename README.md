@@ -10,7 +10,7 @@ summaries using a fine-tuned Large Language Model.
 
 - **Data Extraction:** Automated fetching of Arabic transcripts using the
 YouTube Transcript API.
-- **Text Normalization:** Deep cleaning of Arabic text, including dediacritization
+- **Text Normalization:** Deep cleaning of Arabic text, including diacritization
 and noise removal via camel_tools.
 - **Model Fine-Tuning:** Parameter-Efficient Fine-Tuning (QLoRA) of
 google/gemma-4-E4B-it for targeted instruction following.
